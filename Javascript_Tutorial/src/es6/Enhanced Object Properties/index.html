@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // Property Shorthand
+    let x = 1, y = 2
+    let obj = {
+      x,
+      y
+    }
+    console.log(obj)
+
+    // Computed Property Names
+    const quux = () => 999
+    let obj2 = {
+      foo: "bar",
+      ["baz" + quux()]: 42
+    }
+    console.log(obj2)
+
+    // Method Properties
+    const obj3 = {
+      foo (a, b) {},
+      bar (x, y) { { x, y }},
+      *quux (x, y) {}
+    }
+    console.log(obj3)
+  </script>
+</body>
+
+</html>

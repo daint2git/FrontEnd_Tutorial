@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // Set
+    let s = new Set()
+    s.add("hello").add("goodbye").add("hello")
+    s.size === 2
+    s.has("hello") === true
+    for (let key of s.values()) // insertion order
+      console.log(key)
+
+    console.log('-----')
+    // Map
+    let m = new Map()
+    m.set("hello", 42)
+    m.set("hello", 43)
+    m.set(15, 16)
+    m.set(15, 'aaaa')
+    m.size === 2
+    for (let [key, val] of m.entries())
+      console.log(key + " = " + val)
+
+    console.log('-----')
+    // WeakMap/WeakSet
+    let isMarked = new WeakSet()
+    let attachedData = new WeakMap()
+
+    class Node {
+      constructor(id) {
+        this.id = id
+      }
+      mark() {
+        isMarked.add(this)
+      }
+      unmark() {
+        isMarked.delete(this)
+      }
+      marked() {
+        return isMarked.has(this)
+      }
+      set data(data) {
+        attachedData.set(this, data)
+      }
+      get data() {
+        return attachedData.get(this)
+      }
+    }
+
+    let foo = new Node("foo")
+
+    console.log(JSON.stringify(foo))
+    foo.mark()
+    foo.data = "bar"
+    console.log(foo.data)
+
+    // isMarked.has(foo) === true
+    // attachedData.has(foo) === true
+    // foo = null /* remove only reference to foo */
+    // attachedData.has(foo) === false
+    // isMarked.has(foo) === false
+    console.log(isMarked.has(foo))
+    console.log(attachedData.has(foo))
+    foo = null
+    console.log(isMarked.has(foo))
+    console.log(attachedData.has(foo))
+  </script>
+</body>
+
+</html>

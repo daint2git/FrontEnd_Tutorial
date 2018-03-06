@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // Class Definition
+    class Shape {
+      constructor(id, x, y) {
+        this.id = id
+        this.move(x, y)
+      }
+      move(x, y) {
+        this.x = x
+        this.y = y
+      }
+      toString () {
+        return `Shape(${this.id})`
+      }
+      static fly(z) {
+        console.log('flying', z)
+        return z * 2
+      }
+    }
+
+    console.log(Shape)
+
+    const shape = new Shape()
+    console.log(shape)
+
+    console.log(new Shape(15, 1, 2))
+    console.log(Shape.fly(15))
+
+    // Base Class Access
+    class Rectangle extends Shape {
+      constructor (id, x, y, width, height) {
+        super(id, x, y)
+      }
+      toString () {
+        return "Rectangle > " + super.toString()
+      }
+    }
+    class Circle extends Shape {
+      constructor (id, x, y, radius) {
+        super(id, x, y)
+      }
+      toString () {
+        return "Circle > " + super.toString()
+      }
+    }
+    console.log(new Shape(15).toString())
+    console.log(new Rectangle(16).toString())
+    console.log(new Circle(17).toString())
+
+    // Getter/Setter
+    class Rectangle2 {
+    constructor (width, height) {
+        this._width  = width
+        this._height = height
+    }
+    set width  (width)  { this._width = width               }
+    get width  ()       { return this._width                }
+    set height (height) { this._height = height             }
+    get height ()       { return this._height               }
+    get area   ()       { return this._width * this._height }
+    }
+    var r = new Rectangle2(50, 20)
+    console.log(r.area)
+  </script>
+</body>
+
+</html>

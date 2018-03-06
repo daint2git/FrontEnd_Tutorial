@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // Array Matching
+    var list = [1, 2, 3]
+    var [a, , b] = list
+    console.log(a, b)
+    console.log([b, a])
+
+    // Object Matching
+    var obj = { obj1: 1, obj2: 'abc', obj3: () => {} , obj4: { text: 'zzz', number: 15 } }
+    console.log(obj)
+    var { obj1, obj2, obj3, obj4: { text, number }, obj5 = 'default value', obj6 } = obj
+    console.log(obj1, obj2, obj3, text, number, obj5, obj6)
+
+  </script>
+</body>
+
+</html>

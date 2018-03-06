@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+  // String Interpolation (Interpolation: sự thêm vào)
+  var customer = { name: "Foo" }
+  var card = { amount: 7, product: "Bar", unitprice: 42 }
+  var message = `Hello ${customer.name},
+want to buy ${card.amount} ${card.product} for
+a total of ${card.amount * card.unitprice} bucks?`
+  console.log('message', message)
+
+  // Custom Interpolation
+  // get`http://example.com/foo?bar=${bar + baz}&quux=${quux}`
+
+  // Raw String Access
+  function quux (strings, ...values) {
+    // strings[0] === "foo\n"
+    // strings[1] === "bar"
+    // strings.raw[0] === "foo\\n"
+    // strings.raw[1] === "bar"
+    // values[0] === 42
+    console.log('strings', strings)
+    console.log('values', values)
+    console.log('strings[0]', strings[0])
+    console.log('strings[1]', strings[1])
+    console.log('strings.raw[0]', strings.raw[0])
+    console.log('strings.raw[1]', strings.raw[1])
+    console.log('values[0]', values[0])
+  }
+  quux `foo\n${ 42 }bar`
+
+  console.log('test`', String.raw `foo\n${ 42 }bar`)
+  </script>
+</body>
+
+</html>
