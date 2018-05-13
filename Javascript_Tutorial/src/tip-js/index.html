@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tip js</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // Get the difference between two arrays in javaScript.
+    const difference = (a, b) => {
+      const s = new Set(b)
+      console.log('s', s)
+      return a.filter(element => {
+        console.log('log', element, !s.has(element))
+        return !s.has(element)
+      })
+    }
+
+    console.group('difference')
+    console.log('difference', difference([1, 2, 3], [1, 2, 4]));
+    console.groupEnd()
+
+    // Sử dụng Array.filter() remove những giá trị bao gồm null, false, 0, "", undefined, and NaN.
+    const compact = arr => arr.filter(Boolean)
+    console.group('compact')
+    console.log('compact 1', compact([1, NaN, false, 4, 5, '', {}, undefined, null, 6]))
+    console.log('compact 2', compact(['T' * 23, NaN, false, 5]))
+
+    console.groupEnd()
+    /*
+      Use Array.filter() để tạo những phần tử không bao gồm những phần tử đã khai báo.
+      ex: Ta có arr = [1, 2, 3, 4]
+      User muốn lấy những phần tử 3, 4 không bao gồm 1, 2.
+    */
+    const without = (arr, ...args) => {
+      console.log('args', args)
+      return arr.filter(element => {
+        console.log(`!args.includes(${element})`, !args.includes(element))
+        return !args.includes(element)
+      })
+    }
+
+    console.group('without')
+    console.log('without', without([1, 2, 3, 4], 1, 2));
+    console.groupEnd()
+  </script>
+</body>
+
+</html>

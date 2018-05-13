@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Basic js</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    console.log('google.com'.endsWith('.com'))
+    console.log('google.com'.startsWith('goo'))
+    console.log('google.com'.includes('e.'))
+    console.log('google.com'.repeat(3))
+
+    console.group('sleep')
+    const sleep = ms => new Promise(resolve => {
+      console.log('Dang ngu...');
+      setTimeout(resolve, ms)
+    });
+
+    async function sleepyWork() {
+      console.log('Chuan bi ngu 1000 milisecond...');
+      await sleep(1000);
+
+      console.log('Thuc day lam viec sau 1000 da ngu');
+    }
+
+    sleepyWork();
+    console.groupEnd()
+  </script>
+</body>
+
+</html>
