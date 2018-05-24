@@ -47,6 +47,18 @@
     console.group('without')
     console.log('without', without([1, 2, 3, 4], 1, 2));
     console.groupEnd()
+
+    // typeof , instanceof
+    console.group('typeof , instanceof')
+    const arr = ['a', 'b', 'c']
+    const string = 'abc'
+    const date = new Date()
+    console.log('typeof arr', typeof arr)
+    console.log('typeof string', typeof string)
+    console.log('typeof date', typeof date)
+    console.log('arr instanceof Array', arr instanceof Array)
+    console.log('arr.constructor()', arr.constructor())
+    console.groupEnd()
   </script>
 </body>
 

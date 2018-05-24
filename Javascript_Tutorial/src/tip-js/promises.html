@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    /*
+      Promise.all
+    */
+    const getUserInfo = () =>
+      new Promise((resolve, reject) => {
+        resolve({
+          id: 1,
+          name: 'Dai',
+          age: 25,
+        })
+      })
+
+    const countUserFriends = () =>
+      new Promise((resolve, reject) => resolve(99))
+
+    const getUserSkills = () =>
+      new Promise((resolve, reject) => {
+        resolve({
+          skills: ['js', 'reactjs', 'html']
+        })
+      })
+
+    Promise.all([getUserInfo(), getUserSkills(), countUserFriends()])
+      .then(([result1, result2, result3]) => {
+        console.group('Promise.all()')
+        console.log('result1', result1)
+        console.log('result2', result2)
+        console.log('result3', result3)
+        console.groupEnd()
+      })
+      .catch(err => console.log('err', err))
+
+    /*
+      Promise.race
+    */
+    const promise1 = new Promise((resolve, reject) =>
+      setTimeout(resolve, 500, 'one')
+    )
+
+    const promise2 = new Promise((resolve, reject) =>
+      setTimeout(resolve, 200, 'two')
+    )
+
+    Promise.race([promise1, promise2])
+      .then(value => {
+        console.group('Promise.race()')
+        console.log('value', value)
+        console.groupEnd()
+      })
+  </script>
+</body>
+
+</html>
