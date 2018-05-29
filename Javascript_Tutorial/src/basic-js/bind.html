@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bind()</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+
+    // original
+    const info = {
+      fullName: "Nguyen Tran Dai",
+      account: "DaiNT2",
+      age: 25,
+      showInfo: function(callbackFunc) {
+        callbackFunc()
+      },
+      render: function() {
+        this.showInfo(function() {
+          console.log('this', this) // là đối tượng window
+          console.log('this.fullName', this.fullName) // undefined
+          console.log('this.account', this.account) // undefined
+        })
+      }
+    }
+    console.group('original')
+    info.render()
+    console.groupEnd()
+
+    // _self
+    const info_1 = {
+      fullName: "Nguyen Tran Dai",
+      account: "DaiNT2",
+      age: 25,
+      showInfo: function(callbackFunc) {
+        callbackFunc()
+      },
+      render: function() {
+        const _self = this;
+        this.showInfo(function() {
+          console.log('_self', _self) // là đối tượng info_1
+          console.log('_self.fullName', _self.fullName) // Nguyen Tran Dai
+          console.log('_self.account', _self.account) // DaiNT2
+        })
+      }
+    }
+    console.group('_self')
+    info_1.render()
+    console.groupEnd()
+
+    /*
+      bind() dùng để gán dữ liệu vào đối tượng this của hàm đang sử dụng
+    */
+    const info_2 = {
+      fullName: "Nguyen Tran Dai",
+      account: "DaiNT2",
+      age: 25,
+      showInfo: function(callbackFunc) {
+        callbackFunc()
+      },
+      render: function() {
+        this.showInfo(function() {
+          console.log('this', this) // là đối tượng info_2
+          console.log('this.fullName', this.fullName) // Nguyen Tran Dai
+          console.log('this.account', this.account) // DaiNT2
+        }.bind(this))
+      }
+    }
+    console.group('bind')
+    info_2.render()
+    console.groupEnd()
+
+    // Arrow function
+    const info_3 = {
+      fullName: "Nguyen Tran Dai",
+      account: "DaiNT2",
+      age: 25,
+      showInfo: callbackFunc => {
+        callbackFunc()
+      },
+      render: function() {
+        this.showInfo(() => {
+          console.log('this', this) // là đối tượng info_2
+          console.log('this.fullName', this.fullName) // Nguyen Tran Dai
+          console.log('this.account', this.account) // DaiNT2
+        })
+      }
+    }
+    console.group('Arrow function')
+    info_3.render()
+    console.groupEnd()
+
+    // Truyen data vao bind
+    const info_4 = {
+      fullName: "Nguyen Tran Dai",
+      account: "DaiNT2",
+      age: 25,
+      showInfo: function(callbackFunc) {
+        callbackFunc()
+      },
+      render: function() {
+        this.showInfo(function() {
+          console.log('this', this) // là ["Dai Tran Nguyen", "2TNiaD"]
+        }.bind(['Dai Tran Nguyen', '2TNiaD']))
+      }
+    }
+    console.group('Truyen data vao bind')
+    info_4.render()
+    console.groupEnd()
+
+  </script>
+</body>
+
+</html>
