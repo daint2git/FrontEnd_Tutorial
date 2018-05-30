@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import ComponentTestEnhancer from './test/Recompose/recompose_lesson_1'
+import React from 'react'
+// import TestEnhancer from './test/Recompose/recompose_lesson_1'
+import TestLifecycle from './test/Lifecycle/lifecycle_lesson_1'
 
-class App extends Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
-        All Tutorial about React
-        <ComponentTestEnhancer />
+        <h1>All Tutorial about Reactjs</h1>
+        {/* <TestEnhancer /> */}
+        <TestLifecycle />
       </div>
-    );
+    )
   }
 }
-
-export default App
