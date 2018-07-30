@@ -22,7 +22,7 @@ a total of ${card.amount * card.unitprice} bucks?`
   // get`http://example.com/foo?bar=${bar + baz}&quux=${quux}`
 
   // Raw String Access
-  function quux (strings, ...values) {
+  function quux(strings, ...values) {
     // strings[0] === "foo\n"
     // strings[1] === "bar"
     // strings.raw[0] === "foo\\n"
@@ -36,7 +36,7 @@ a total of ${card.amount * card.unitprice} bucks?`
     console.log('strings.raw[1]', strings.raw[1])
     console.log('values[0]', values[0])
   }
-  quux `foo\n${ 42 }bar`
+  quux`foo\n${ 42 }bar`
 
   console.log('test`', String.raw `foo\n${ 42 }bar`)
   </script>
